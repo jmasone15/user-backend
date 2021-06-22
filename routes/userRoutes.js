@@ -35,7 +35,6 @@ router.post("/signup", async (req, res) => {
         const token = jwt.sign({
             user: savedUser._id
         }, secretKey);
-        res.set("Access-Control-Allow-Origin", "https://www.jordanmasone.com");
         res.cookie("token", token, {
             httpOnly: false,
         }).send();
@@ -71,7 +70,6 @@ router.post("/login", async (req, res) => {
         const token = jwt.sign({
             user: existingUser._id
         }, secretKey);
-        res.set("Access-Control-Allow-Origin", "https://www.jordanmasone.com");
         res.cookie("token", token, {
             httpOnly: false,
         }).send();
@@ -83,8 +81,7 @@ router.post("/login", async (req, res) => {
 });
 
 // To log a user out, we delete the cookie that we set in the earlier routes.
-router.get("/logout", (req, res) => {
-    res.set("Access-Control-Allow-Origin", "https://www.jordanmasone.com");
+router.get("/logout", (req, res) =>
     res.cookie("token", "", {
         httpOnly: false,
         expires: new Date(0)
@@ -95,10 +92,10 @@ router.get("/loggedIn", (req, res) => {
     try {
         const token = req.cookies.token;
         if (!token) {
-            res.set("Access-Control-Allow-Origin", "https://www.jordanmasone.com");
+
             return res.json(false);
         } else {
-            res.set("Access-Control-Allow-Origin", "https://www.jordanmasone.com");
+
             res.send(true);
         }
     } catch (err) {
@@ -109,7 +106,6 @@ router.get("/loggedIn", (req, res) => {
 router.get("/profile/:id", async (req, res) => {
     try {
         const userInfo = await User.findById(req.params.id);
-        res.set("Access-Control-Allow-Origin", "https://www.jordanmasone.com");
         res.json(userInfo);
     } catch (err) {
         console.error(err);
