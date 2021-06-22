@@ -109,7 +109,7 @@ router.get("/loggedIn", (req, res) => {
 router.get("/profile/:id", async (req, res) => {
     try {
         const userInfo = await User.findById(req.params.id);
-        res.set("Access-Control-Allow-Origin", "*");
+        res.set("Access-Control-Allow-Origin", "https://www.jordanmasone.com/userauth");
         res.json(userInfo);
     } catch (err) {
         console.error(err);
