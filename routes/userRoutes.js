@@ -81,7 +81,7 @@ router.post("/login", async (req, res) => {
 });
 
 // To log a user out, we delete the cookie that we set in the earlier routes.
-router.get("/logout", (req, res) =>
+router.get("/logout", (req, res) => {
     res.cookie("token", "", {
         httpOnly: false,
         expires: new Date(0)
@@ -91,13 +91,10 @@ router.get("/logout", (req, res) =>
 router.get("/loggedIn", (req, res) => {
     try {
         const token = req.cookies.token;
-        if (!token) {
-
+        if (!token)
             return res.json(false);
-        } else {
 
-            res.send(true);
-        }
+        res.send(true);
     } catch (err) {
         res.json(false);
     }
