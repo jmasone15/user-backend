@@ -1,0 +1,27 @@
+{
+  "name": "user-backend",
+  "version": "1.0.0",
+  "description": "Backend for user functions of other applications",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmasone15/user-backend.git"
+  },
+  "author": "Jordan Masone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmasone15/user-backend/issues"
+  },
+  "homepage": "https://github.com/jmasone15/user-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": "v14.15.1"
+  }
+}
