@@ -36,7 +36,6 @@ router.post("/signup", async (req, res) => {
             user: savedUser._id
         }, secretKey);
         res.cookie("token", token, {
-            httpOnly: false,
             domain: "damp-savannah-74900.herokuapp.com"
         }).send();
 
@@ -72,7 +71,6 @@ router.post("/login", async (req, res) => {
             user: existingUser._id
         }, secretKey);
         res.cookie("token", token, {
-            httpOnly: false,
             domain: "damp-savannah-74900.herokuapp.com"
         }).send();
 
