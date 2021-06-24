@@ -36,6 +36,7 @@ router.post("/signup", async (req, res) => {
             user: savedUser._id
         }, secretKey);
         res.cookie("token", token, {
+            domain: ".damp-savannah-74900.herokuapp.com",
             secure: true,
             sameSite: "none"
         }).send();
@@ -72,6 +73,7 @@ router.post("/login", async (req, res) => {
             user: existingUser._id
         }, secretKey);
         res.cookie("token", token, {
+            domain: ".damp-savannah-74900.herokuapp.com",
             secure: true,
             sameSite: "none"
         }).send();
@@ -85,6 +87,7 @@ router.post("/login", async (req, res) => {
 // To log a user out, we delete the cookie that we set in the earlier routes.
 router.get("/logout", (req, res) => {
     res.cookie("token", "", {
+        domain: ".damp-savannah-74900.herokuapp.com",
         secure: true,
         sameSite: "none",
         expires: new Date(0)
