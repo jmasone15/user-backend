@@ -2,21 +2,9 @@ const router = require("express").Router();
 const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const cors = require("cors");
-const secretKey = "rR58%&h7bm6@th*jjZwDuN3ahB2ukF+5ZYHsZ88Str^2mqsb_e";
+const secretKey = "rR58%&h7bm6@th*jjZwDuN3ahB2ukF+5ZYHsZ88Str^2mqsb_e"
 
-const whitelist = ["https://www.jordanmasone.com", "http://localhost:3000"];
-const corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
-}
-
-router.post("/signup", cors(corsOptions), async (req, res) => {
+router.post("/signup", async (req, res) => {
     // If there is an error inside of the try block, it will move to the catch block and handle the error.
     try {
         const { email, password } = req.body;
@@ -61,7 +49,7 @@ router.post("/signup", cors(corsOptions), async (req, res) => {
     }
 });
 
-router.post("/login", cors(corsOptions), async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -93,14 +81,14 @@ router.post("/login", cors(corsOptions), async (req, res) => {
 });
 
 // To log a user out, we delete the cookie that we set in the earlier routes.
-router.get("/logout", cors(corsOptions), (req, res) => {
+router.get("/logout", (req, res) => {
     res.cookie("token", "", {
         httpOnly: false,
         expires: new Date(0)
     }).send();
 });
 
-router.get("/loggedIn", cors(corsOptions), (req, res) => {
+router.get("/loggedIn", (req, res) => {
     try {
         const token = req.cookies.token;
         if (!token)
@@ -112,7 +100,7 @@ router.get("/loggedIn", cors(corsOptions), (req, res) => {
     }
 });
 
-router.get("/profile/:id", cors(corsOptions), async (req, res) => {
+router.get("/profile/:id", async (req, res) => {
     try {
         const userInfo = await User.findById(req.params.id);
         res.json(userInfo);
