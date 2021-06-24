@@ -37,6 +37,7 @@ router.post("/signup", async (req, res) => {
         }, secretKey);
         res.cookie("token", token, {
             domain: "damp-savannah-74900.herokuapp.com",
+            secure: true,
             sameSite: "none"
         }).send();
 
@@ -73,6 +74,7 @@ router.post("/login", async (req, res) => {
         }, secretKey);
         res.cookie("token", token, {
             domain: "damp-savannah-74900.herokuapp.com",
+            secure: true,
             sameSite: "none"
         }).send();
 
