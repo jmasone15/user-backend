@@ -36,7 +36,8 @@ router.post("/signup", async (req, res) => {
             user: savedUser._id
         }, secretKey);
         res.cookie("token", token, {
-            domain: "damp-savannah-74900.herokuapp.com"
+            domain: "damp-savannah-74900.herokuapp.com",
+            sameSite: "none"
         }).send();
 
         // Use a password generator to get your own secret key for the JSON Web Token
@@ -71,7 +72,8 @@ router.post("/login", async (req, res) => {
             user: existingUser._id
         }, secretKey);
         res.cookie("token", token, {
-            domain: "damp-savannah-74900.herokuapp.com"
+            domain: "damp-savannah-74900.herokuapp.com",
+            sameSite: "none"
         }).send();
 
     } catch (err) {
