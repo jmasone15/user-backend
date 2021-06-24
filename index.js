@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
-const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,8 +10,6 @@ const PORT = process.env.PORT || 3000;
 // Runs functions for incoming requests for all paths or specific requests 
 app.use(express.json());
 app.use(cookieParser());
-// app.use(cors({ credentials: true, origin: "https://www.jordanmasone.com" }));
-app.use(cors());
 app.use(morgan("tiny")); // logging framework
 
 // Serve up static assets (usually on heroku)
