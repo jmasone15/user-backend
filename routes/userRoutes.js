@@ -37,6 +37,7 @@ router.post("/signup", async (req, res) => {
         }, secretKey);
         res.cookie("token", token, {
             httpOnly: false,
+            domain: "damp-savannah-74900.herokuapp.com"
         }).send();
 
         // Use a password generator to get your own secret key for the JSON Web Token
@@ -72,6 +73,7 @@ router.post("/login", async (req, res) => {
         }, secretKey);
         res.cookie("token", token, {
             httpOnly: false,
+            domain: "damp-savannah-74900.herokuapp.com"
         }).send();
 
     } catch (err) {
